@@ -1,3 +1,4 @@
+// converting array to linkedlist
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -21,12 +22,20 @@ class Node{
 Node* convertarr2ll(vector<int> &arr)
 {
     Node* head = new Node(arr[0]);
+    Node* mover = head;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        Node* temp = new Node(arr[i]);
+        mover->next = temp;
+        mover=mover->next;
+    }
+    return head;
+    
 }
 
 int main(){
-    vector<int> arr = {1,23,4,5,6};
-    Node* y = new Node(arr[0],nullptr);
-    cout<<y<<endl;
-    cout<<y->data;
+    vector<int> arr = {56,23,4,5,6};
+    Node* head = convertarr2ll(arr);
+    cout<<head->data<<endl;
     return 0;
 }
